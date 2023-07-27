@@ -1,0 +1,1 @@
+Script for batch converting WEBP files in a directory to a PNG.
