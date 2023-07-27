@@ -1,18 +1,21 @@
 import os
 import argparse
-from PIL import Image
+from src.Converter import Converter
 
-parser = argparse.ArgumentParser()
-parser.add_argument('directory')
-arguments = parser.parse_args()
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('directory')
+    arguments = parser.parse_args()
+    conv = Converter()
 
-directory = os.fsencode(arguments.directory)
-count = 0
+    directory = os.fsencode(arguments.directory)
+    count = 0
 
-for file in os.listdir(directory):
-    filename = os.fsdecode(file)
+    for file in os.listdir(directory):
+        filename = os.fsdecode(file)
 
-    if filename.endswith('.webp'):
-        image = Image.open(f'{arguments.directory + "/" + filename}')
-        new_filename = filename.split()[0] + '.png'
-        image.save(f'{new_filename}', format='PNG')
+        if filename.endswith('.webp'):
+            conv.convert(f"{arguments.directory + '/' + filename}")
+
+if __name__== '__main__':
+    main()
