@@ -9,7 +9,6 @@ def main():
     conv = Converter()
 
     directory = os.fsencode(arguments.directory)
-    count = 0
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
